@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}Modification{% endblock %}
+{% block pageTitle %}Modification{% endblock %}
+{% block body %}
+<form action="" method="POST" enctype="multipart/form-data" >
+    </br>
+    <div class="container"><h2 style="text-align : center;" >Modification du profil de l'acteur</h2></div>
+    <div style="text-align : center;"></br></br></br></br>
+        <h4><label for="nom">Nouveau nom:</label></h4>
+        <input type="text" name="nom" id="nom" value="{{ acteur.nom }}" /></br></br>
+        <h4><label for="prenom">Nouveau Prénom :</label></h4>
+        <input type="text" name="prenom" id="prenom" value="{{ acteur.prenom }}" /></br></br>
+        <h4><label for="dateDeNaissance">Date de naissance :</label></h4>
+        <input type="date" name="dateDeNaissance" id="dateDeNaissance" value="{{ acteur.dateDeNaissance|date("d/m/Y") }}" /></br></br>
+        <h4><label for="dateDeMort">Date de mort : laisser vide si nulle</label></h4>
+        <input type="date" name="dateDeMort" id="dateDeMort" value="{{ acteur.dateDeMort|date("d/m/Y") }}" /></br></br>
+        <h4><label>
+            Photo:
+        </label></h4>
+        <input type="file" name="photo" id="photo"/></br></br></br></br> 
+        <div><button type="submit" class="btn btn-primary">Valider votre choix</button></div>
+    </div>
+</form>
+{% endblock %}

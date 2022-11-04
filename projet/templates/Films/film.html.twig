@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block title %}Infos{% endblock %}
+{% block pageTitle %}Infos{% endblock %}
+{% block body %}
+<table width='80%' class="table table-dark table-striped-columns">
+    <thead>
+        <tr>
+            <th>L'id du film</th>
+            <th>Son genre</th>
+            <th>Les acteurs</th>
+            <th>Le titre</th>
+            <th>Le résumé</th>
+            <th>La date de sortie du film</th>
+            <th>L'affiche</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ film.id }}</td>
+            <td>{{ film.genre.nom }}</td>
+            <td>{% for acteur in film.acteurs %}
+            <button class="btn btn-outline-light" style="text-decoration:none;"> <a style="text-decoration:none;color:gray;" href="{{ url('acteur', {'id': acteur.id}) }}" >{{ acteur.nom }}</a></button>
+            {% endfor %}</td>
+            <td>{{ film.titre }}</td>
+            <td>{{ film.resume }}</td>
+            <td>{{ film.dateDeSortie |date("d/m/Y")  }}</td>
+            <td>
+             {% if film.affiche is not null %}
+                <img src="{{ asset("Affiches/"~film.affiche) }}" width="500" />
+            {% endif %}
+
+        </tr>
+     
+    </tbody>
+</table>
+
+{% endblock %}

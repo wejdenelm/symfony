@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block title %}Modification{% endblock %}
+{% block pageTitle %}Modification{% endblock %}
+{% block body %}
+<form action="" method="POST" enctype="multipart/form-data">
+    <div style="text-align : center;"></br></br></br>
+        <h4><label for="titre">Nouveau titre du film : </label></h4>
+        <input type="text" name="titre" id="titre" value="{{film.titre}}" /></br></br>
+        <h4><label for="resume">Modifier le résumé : </label></h4>
+        <input type="text" name="resume" id="resume" value="{{film.resume}}" /></br></br>
+        <h4><label for="date_de_sortie">Sa date de sortie : </label></h4>
+        <input type="date" name="dateDeSortie" id="dateDeSortie" value="{{ film.DateDeSortie|date("d/m/Y") }}"/></br></br>
+        <h4><label for="genre"> Le genre du film : </label></h4>
+        <select name="genre" id="genre"> <option value="" />
+            {% for genre in genres %}
+                <option value="{{ genre.id }}" {% if film.genre.id == genre.id %} selected {% endif %}>{{ genre.nom }}</option>
+            {% endfor %}
+        </select></br></br>
+        <h4><label>
+            Affiche:
+        </label></h4>
+        <input type="file" name="affiche" id="affiche"/></br></br></br></br>
+        <div><button type="submit" class="btn btn-primary" >Valider votre choix</button></div>
+    </div>
+</form>
+{% endblock %}

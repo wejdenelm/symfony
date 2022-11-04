@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block title %}Films{% endblock %}
+{% block pageTitle %}Films{% endblock %}
+{% block body %}
+<h4 style="text-align : center;">{% if genre is defined %}
+Films du genre {{ genre.nom }}
+{% endif %}</h4>
+
+<h4 style="text-align : center;" >Tous les films</h4></br>
+<button class="btn btn-primary"><a style="text-decoration:none; color:black;" href="{{ url('app_films_create') }}">Ajouter un nouveau film de votre choix </a></button></br></br>
+<table width='70%' class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th >ID</th>
+            <th>Titre</th>
+            <th>Genre</th>
+            <th>Acteurs</th>
+            <th>Affiche</th>
+            <th>Résumé</th>
+            <th>Date de sortie</th>
+            <th>Modifications</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for film in films %}
+        <tr>
+            <td>{{ film.id }}</td>
+        <td><button class="btn btn-outline-light" style="text-decoration:none;"> <a style="text-decoration:none;color:gray;" href="{{ url('film', {'id': film.id}) }}" >{{ film.titre }}</a></button></td>
+        <td><button class="btn btn-outline-light" style="text-decoration:none;"><a style="text-decoration:none;color:gray;" href="{{ url('film_genre', {'genre_id': film.genre.id}) }}" >{{ film.genre.nom }}</a></button></td>
+            <td>{% for acteur in film.acteurs %}
+            <button class="btn btn-outline-light" style="text-decoration:none;"><a style="text-decoration:none;color:gray;" href="{{ url('acteur', {'id': acteur.id}) }}" >{{ acteur.nom }}</a></button>
+            {% endfor %}</td>
+            <td>
+            {% if film.affiche is not null %}
+                <img src="{{ asset("Affiches/"~film.affiche) }}" width="150" />
+            {% endif %}
+            </td>
+            <td>{{ film.resume }}</td>
+            <td>{{ film.DateDeSortie|date("d/m/Y") }}</td>
+            <td>
+                <button class="btn btn-outline-info"><a style="text-decoration:none; color:white;" href="{{ url('app_films_edit', {'film': film.id}) }}">Modifier</a></button>
+                <button class="btn btn-outline-danger"><a style="text-decoration:none; color:white;" href="{{ url('app_films_delete', {'film': film.id}) }}">Supprimer</a></button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %} 
+{% block title %}Modification{% endblock %}
+{% block pageTitle %}Modification{% endblock %}
+{% block body %}
+<form action="" method="POST">
+    <div class="mb-3, container">
+        <h2><label for="nom" class="form-label">Nouveau nom : </label></h2>
+        <input type="text" placeholder="Ex : Action" aria-label="Action"  name="nom" id="nom" value="{{ genre.nom }}" />
+    <div>
+    <button type="submit" class="btn btn-primary">Valider ce choix</button>
+    </div>
+</form>
+{% endblock %}

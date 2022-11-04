@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block title %}Genres{% endblock %}
+{% block pageTitle %}Genres{% endblock %}
+
+{% block body %}
+<table width='175%' class="table table-success table-striped; margin:200px;" >
+    <thead>
+        <tr >
+            <th>ID</th>
+            <th>Genres</th>
+            <th>Modifications</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for genre in genres %}
+        <tr>
+            <td>{{ genre.id }}</td>
+            <td><button class="btn btn-outline-light" style="text-decoration:none;color:black;"><a style="text-decoration:none;color:black;" href="{{ url('genre_film', {'id': genre.id}) }}" >{{ genre.nom }}</a></button></td>
+    
+            <td>
+                
+                <button class="btn btn-outline-dark"><a style="text-decoration:none;color:white;" href="{{ url('app_genres_edit', {'genre': genre.id}) }}">Modifier</a></button>
+                <button class="btn btn-outline-dark"><a style="text-decoration:none; color:white;" href="{{ url('app_genres_delete', {'genre': genre.id}) }}">Supprimer</a></button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="container">
+<button class="btn btn-outline-dark"><a style="text-decoration:none; color:gray;" href="{{ url('app_genres_create') }}">Créer votre genre</a></button>
+</div>
+
+{% endblock %}

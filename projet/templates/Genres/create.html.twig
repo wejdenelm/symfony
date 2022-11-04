@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}Création{% endblock %}
+{% block pageTitle %}Création{% endblock %}
+{% block body %}
+<form action="" method="POST">
+    <div class="mb-3, container">
+        <h2><label for="name"class="form-label">Nom du genre à créer</label></h2>
+        <input type="text" placeholder="Ex : Romance" aria-label="Romance" name="nom" id="nom" /></div>
+    <div>
+    <button type="submit" class="btn btn-primary">Valider votre choix</button>
+    </div>
+</form>
+{% endblock %}

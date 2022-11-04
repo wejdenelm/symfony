@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %}Création{% endblock %}
+{% block pageTitle %}Création{% endblock %}
+{% block body %}
+<form action="" method="POST" enctype="multipart/form-data">
+    <div style="text-align : center;"></br></br></br></br>
+        <h4><label for="nom"> Nom de l'acteur : </label></br></h4>
+        <input type="text" name="nom" id="name" /></br></br>
+        <h4><label for="prenom">Prenom de l'acteur : </label></br></h4>
+        <input type="text" name="prenom" id="prenom" /></br></br>
+        <h4><label for="dateDeNaissance">Sa date de naissance:</label></br></h4>
+        <input type="date" name="dateDeNaissance" id="dateDeNaissance" /></br></br>
+        <h4><label for="dateDeMort">Date de mort : Ne pas remplir si l'acteur est encore vivant</label></br></h4>
+        <input type="date" name="dateDeMort" id="dateDeMort" /></br></br>
+        <h4><label>
+            Photo:
+        </label></br></br></h4>
+        <input type="file" name="photo" id="photo"/></br></br></br></br>
+        
+        <div><button type="submit" class="btn btn-primary" >Valider votre choix</button></div>  
+    </div>
+</form>
+{% endblock %}

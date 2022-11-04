@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block title %}Infos{% endblock %}
+{% block pageTitle %}Infos{% endblock %}
+{% block body %}
+
+
+
+<table width='70%'class="table table-dark table-striped">
+
+    <thead>
+        <tr>
+            <th>L'id de l'acteur</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Date de naissance</th>
+            <th>Date de mort</th>
+            <th>Photo</th>
+            <th>Films</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        
+            <td>{{ acteur.id }}</td>
+            <td>{{ acteur.nom }}</td>
+            <td>{{ acteur.prenom}}</td>
+            <td>{{ acteur.dateDeNaissance |date("d/m/Y") }}</td>
+            <td>{{ acteur.dateDeMort|date("d/m/Y")  }}</td>
+            <td>{% if acteur.photo is not null %}
+                <img src="{{ asset("Photos/"~acteur.photo) }}" width="400" />
+            {% endif %}</td>
+            <td>{% for film in acteur.films %}
+            <button class="btn btn-outline-primary"><a style="text-decoration:none; color:white;" href="{{ url('film', {'id': film.id}) }}">{{ film.titre }}</a></button>
+            {% endfor %}</td>
+            
+        </tr>
+     
+    </tbody>
+</table>
+
+
+{% endblock %}

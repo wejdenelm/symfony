@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ajout{% endblock %}
+{% block pageTitle %}Ajout{% endblock %}
+
+{% block body %}
+<form action="" method="POST" enctype="multipart/form-data">
+    <div style="text-align : center;"></br>
+        <h4><label for="titre">Titre du film : </label></h4></br>
+        <input type="text" name="titre" id="titre" /></br></br>
+        <h4><label for="resume">Résumé du film : </label></h4></br>
+        <h4><input type="text" name="resume" id="resume" /></h4></br>
+        <h4><label for="dateDeSortie">Date de Sortie : </label></h4></br>
+        <input type="date" name="dateDeSortie" id="dateDeSortie" /></br></br>
+        <h4><label for="genre">Genre du film : </label></h4></br>
+        <select name="genre" id="genre"><option value="" />
+            {% for genre in genres %}
+                <option value="{{ genre.id }}">{{ genre.nom }}</option>
+            {% endfor %}
+        </select></br></br>
+        <h4><label for="acteur">Acteurs du film : </label></h4></br>
+        <select name="acteur[]" id="acteur"  multiple><option value="" />
+            {% for acteur in acteurs %}
+                <option value="{{ acteur.id }}">{{ acteur.nom }}</option>
+            {% endfor %}
+        </select></br></br>
+        <h4><label>
+            Affiche:
+        </label></h4></br></br>
+        <input type="file" name="affiche" id="affiche"/></br></br></br>
+        <div><button type="submit" class="btn btn-primary">Valider le choix</button></div>
+    </div>
+</form>
+{% endblock %}
+
+
+
+
